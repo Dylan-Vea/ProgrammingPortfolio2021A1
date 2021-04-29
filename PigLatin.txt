@@ -1,0 +1,36 @@
+ay = 'ay'
+
+print("Welcome to the Pig Latin translator, What is your name?")
+myName = input()
+
+print("Welcome, "+myName+", Enter a word in English down below.")
+eWord = input
+
+sentence = input("Enter a sentence you want to convert to pig latin: ")
+
+sentence = sentence.split()
+for i in range(len(sentence)):
+    if sentence[i][0] in "aeiou":
+        sentence[i] += 'yay'
+    else:
+        sentence[i]=sentence[i][1:]+sentence[i][0]
+        sentence[i]+='ay'
+sentence = ' '.join(sentence)
+
+print(sentence)
+
+sentence = input() 
+for word in sentence.split():
+    if word[0] in "aeiou":
+      
+
+  def pig_latin(word):
+    if word[0] in "aeiou":
+        return word + 'yay'
+
+return word[1:] + word[0] + 'ay'
+
+sentence = input("Enter a sentence you want to convert to pig latin: ")
+print(' '.join(pig_latin(word) for word in sentence.split()))
+
+pig_latin_string = ''
