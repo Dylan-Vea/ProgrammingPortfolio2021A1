@@ -1,0 +1,123 @@
+﻿Calculator
+
+
+Button[] numButtons = new Button [10];
+Button[] opButtons = new Button[15];
+String dVal = "000";
+
+
+void setup() {
+  size (495,630);
+  numButtons[0] = new Button(10,530,90,90,"0");
+  numButtons[1] = new Button(10,440,90,90,"1");
+  numButtons[2] = new Button(100,440,90,90,"2");
+  numButtons[3] = new Button(190,440,90,90,"3");
+  numButtons[4] = new Button(10,350,90,90,"4");
+  numButtons[5] = new Button(100,350,90,90,"5");
+  numButtons[6] = new Button(190,350,90,90,"6");
+  numButtons[7] = new Button(10,260,90,90,"7");
+  numButtons[8] = new Button(100,260,90,90,"8");
+  numButtons[9] = new Button(190,260,90,90,"9");
+  opButtons[0] = new Button(100,530,90,90,".");
+  opButtons[1] = new Button(190,530,90,90,"(-)");
+  opButtons[2] = new Button(10,170,90,90,"On/Off");
+  opButtons[3] = new Button(100,170,90,90,"(");
+  opButtons[4] = new Button(190,170,90,90,")");
+  opButtons[5] = new Button(280,170,90,90,"Clear");
+  opButtons[6] = new Button(280,260,90,90,"?");
+  opButtons[7] = new Button(280,350,90,90,"?");
+  opButtons[8] = new Button(280,440,90,90,"?");
+  opButtons[9] = new Button(280,530,90,90,"?");
+  opButtons[10] = new Button(370,170,110,90,"X");
+  opButtons[11] = new Button(370,260,110,90,"/");
+  opButtons[12] = new Button(370,350,110,90,"-");
+  opButtons[13] = new Button(370,440,110,90,"+");
+  opButtons[14] = new Button(370,530,110,90,"Enter");
+  opButtons[15] = new Button(10,30,470,140,"");
+}
+
+
+void draw() {
+  background(127);
+  for(int i=0; i<numButtons.length; i++) { 
+  numButtons[i].display();
+  numButtons[i].hover();
+  }
+  for(int i=0; i<numButtons.length; i++) { 
+  numButtons[i].display();
+  numButtons[i].hover();
+  }
+  updateDisplay();
+}
+
+
+
+
+void mousePressed() {
+  for(int i=0; i<numButtons.length; i++)
+  if (numButtons[i].hover == true);
+  dVal += numButtons[0].val;
+}
+
+
+void updateDisplay() {
+  fill(80);
+  rect(10,10,width-20,80);
+  fill(255);
+  text(dVal,width-40,65);
+}
+
+
+void performCalculation() {}
+
+
+Button
+
+
+class Button {
+
+
+  // Member Variables
+  int x, y, w, h;
+  String val;
+  boolean hover;
+  color c1, c2;
+
+
+  // Constructor
+  Button(int tempX, int tempY, int tempW, int tempH, String tempVal) {
+    x = tempX;
+    y = tempY;
+    w = tempW;
+    h = tempH;
+    val = tempVal;
+    hover = false;
+    c1 = #7534DC;
+    c2 = #000000;
+  }
+
+
+  // Display the Button
+  void display() {
+      if (hover) {
+        fill(c2);
+      } else {
+        fill(c1);
+      }
+    //rectMode(CENTER) 
+    rect(x, y, w, h);
+    fill(255);
+    text(val, x+10, y+45); }
+
+
+
+
+
+
+
+
+      // Edge Detection
+      void hover() {
+      hover = mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h;
+    }
+  }
